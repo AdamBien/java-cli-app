@@ -18,14 +18,16 @@ A zero-dependency Java 25 CLI application, built and packaged with [zb](https://
 
 ## Prerequisites
 
-Java 25+, [zb](https://github.com/AdamBien/zb)
+Java 25+, [zb](https://github.com/AdamBien/zb), [zunit](https://github.com/AdamBien/zunit)
 
-## Build & run
+## Build, test & run
 
 ```
 zb
 java -jar zbo/app.jar
 ```
+
+`zb` compiles, packages `zbo/app.jar`, and then runs [zunit](https://github.com/AdamBien/zunit) via the `post.build.hook` in `.zb`. zunit discovers `*Test.java` scripts in `test/` and runs each with `java --source 25 -ea` against `zbo/app.jar`; a failing test fails the build.
 
 ## [/sbce](https://sbce.space) Quickstart
 
